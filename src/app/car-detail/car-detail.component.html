@@ -1,0 +1,13 @@
+<div *ngIf="car">
+
+    <h2>{{car.model | uppercase}} Details</h2>
+    <div><span>id: </span>{{car.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="car.model" placeholder="model"/>
+      </label>
+    </div>
+  </div>
+  <button (click)="save()">Save</button>
+  <button (click)="goBack()">Back</button>
+  
