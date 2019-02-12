@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { CarSearchComponent } from './car-search/car-search.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     CarsComponent,
     CarDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    CarSearchComponent
   ],
   imports: [
     BrowserModule,

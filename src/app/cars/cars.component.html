@@ -2,18 +2,18 @@
 <ul interface="cars">
   <li *ngFor="let car of cars ">
     <a routerLink="/detail/{{car.id}}">
-    <span class="badge"></span> {{car.year}} {{car.make}} {{car.model}}
+    <span class="badge">{{car.id}}</span> {{car.name}}
     </a>
-    <button class="delete" title="delete hero"
-    (click)="delete(hero)">x</button>
+    <button class="delete" title="delete car"
+    (click)="delete(car)">x</button>
   </li>
 </ul>
 <div>
-    <label>Car model:
-      <input #CarModel />
+    <label>Car name:
+      <input #carName />
     </label>
     <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(carModel.value); carModel.value=''">
+    <button (click)="add(carName.value); carName.value=''">
       add
     </button>
   </div>

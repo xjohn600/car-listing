@@ -8,9 +8,11 @@ import { Car } from './car';
 export class InMemoryDataService implements InMemoryDbService{
   createDb() {
     const cars = [
-      {id: 1, year: 2009, make: "Honda", model: "Civic", status: "Clean"},
-      {id: 2, year: 2010, make: "Toyota", model: "Corolla", status: "Rebuilt"},
-      {id: 3, year: 2011, make: "Infiniti", model: "Q50", status: "Clean"}
+      {id: 1, name: "2009 Honda Civic"},
+      {id: 2, name: "2010 Toyota Corolla"},
+      {id: 3, name: "2015 Infiniti Q50"},
+      {id: 4, name: "2017 Lexus IS350"},
+      {id: 5, name: "2019 Toyota Supra"}
     ];
   return {cars};
   }

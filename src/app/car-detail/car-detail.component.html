@@ -1,10 +1,10 @@
 <div *ngIf="car">
 
-    <h2>{{car.model | uppercase}} Details</h2>
+    <h2>{{car.name | uppercase}} Details</h2>
     <div><span>id: </span>{{car.id}}</div>
     <div>
       <label>name:
-        <input [(ngModel)]="car.model" placeholder="model"/>
+        <input [(ngModel)]="car.name" placeholder="name"/>
       </label>
     </div>
   </div>

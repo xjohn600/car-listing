@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Car } from './car';
-import { CARS } from './mock-cars';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -48,6 +47,17 @@ export class CarService {
     return this.http.delete<Car>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Car>('deleteCar'))
+    );
+  }
+  searchCars (term: string): Observable<Car[]> {
+    
+    if (!term.trim()) {
+      //if not search term, return empty car array
+      return of([]);
+    }
+    return this.http.get<Car[]>(`${this.carsUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found cars matching "${term}"`)),
+      catchError(this.handleError<Car[]>('searchCars', []))
     );
   }
   private log(message: string){
