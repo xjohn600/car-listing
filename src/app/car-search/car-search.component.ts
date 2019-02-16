@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject} from 'rxjs';
 import {
-  debounceTime, distinctUntilChanged, switchMap
+  debounceTime, distinctUntilChanged, switchMap, map
 } from 'rxjs/operators';
 import { Car } from '../car';
 import { CarService } from '../car.service';
-
 @Component({
   selector: 'app-car-search',
   templateUrl: './car-search.component.html',
   styleUrls: ['./car-search.component.css']
 })
 export class CarSearchComponent implements OnInit {
-  cars$: Observable<Car[]>;
+  cars$: Observable<Array<Car>>;
+  carsfiltered: Observable<Array<Car>>;
   private searchTerms = new Subject<string>();
 
   constructor(private carService: CarService) { }
@@ -32,6 +32,10 @@ export class CarSearchComponent implements OnInit {
       switchMap((term: string) => 
       this.carService.searchCars(term))
     );
+    // this.searchTerms.pipe(debounceTime(300), distinctUntilChanged(), switchMap((term:string) => this.carService.searchCars(term)))
+    // .subscribe(car => {
+    //   this.cars$ = car;});
+
   }
 
 }

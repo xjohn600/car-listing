@@ -2,8 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const ODataSettings = {
+  rootUri : 'https://localhost:44352/odata/'
+}
 export const environment = {
+  rootUri: 'http://localhost:4200',
+  odataSettings: ODataSettings,
   production: false
+  
 };
 
 /*

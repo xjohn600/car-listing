@@ -9,9 +9,8 @@ import { CarDetailComponent } from './car-detail/car-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
 import { CarSearchComponent } from './car-search/car-search.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,16 +20,14 @@ import { CarSearchComponent } from './car-search/car-search.component';
     CarDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    CarSearchComponent
+    CarSearchComponent,
+    BrowserAnimationsModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    )
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

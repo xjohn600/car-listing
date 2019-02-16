@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../car';
 import { CarService } from '../car.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cars',
@@ -8,26 +9,32 @@ import { CarService } from '../car.service';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent implements OnInit {
-  cars: Car[];
+  cars: Observable<Array<Car>>;
+  test: any;
   constructor(private carService: CarService) { }
 
   ngOnInit() {
-    this.getCars();
+    // this.carService.getCars()
+    // .subscribe(x => alert(JSON.stringify(x)));
+    //alert("This has been called");
+    this.cars = this.carService.getCars();
   }
-  getCars(): void{
-    this.carService.getCars()
-      .subscribe(cars => this.cars = cars);
-  }
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.carService.addCar({ name } as Car)
-      .subscribe(car => {
-        this.cars.push(car);
-      });
+  //getCars(): void{
+    //this.carService.getCars()
+      //.subscribe(cars => this.cars = cars)
+ // }
+
+  add(Name: string): void {
+    Name = Name.trim();
+    var array = Name.split(" ", 3);
+    const Year = parseInt(array[0]);
+    var Make = array[1];
+    var Model = array[2];
+    alert(array);
+    if (!array) { return; } 
+    this.carService.addCar({Year, Make, Model } as Car).subscribe();
   }
   delete(car: Car): void{
-    this.cars = this.cars.filter(c => c != car);
     this.carService.deleteCar(car).subscribe();
   }
 }

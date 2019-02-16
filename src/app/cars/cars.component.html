@@ -1,19 +1,18 @@
 <h2>List of Cars</h2>
-<ul interface="cars">
-  <li *ngFor="let car of cars ">
-    <a routerLink="/detail/{{car.id}}">
-    <span class="badge">{{car.id}}</span> {{car.name}}
+<ul>
+  <li *ngFor="let car of cars | async">
+    <a routerLink="/detail/{{car.ID}}">
+    <span class="badge">{{ car.ID }}</span> {{ car.Year }} {{ car.Make}} {{ car.Model }}
     </a>
-    <button class="delete" title="delete car"
-    (click)="delete(car)">x</button>
+     <button class="delete" title="delete car" 
+     (click)="delete(car)">x</button>
   </li>
 </ul>
 <div>
-    <label>Car name:
+    <label>Car Year/Make/Model:
       <input #carName />
     </label>
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(carName.value); carName.value=''">
+     <button (click)="add(carName.value); carName.value=''">
       add
     </button>
   </div>
